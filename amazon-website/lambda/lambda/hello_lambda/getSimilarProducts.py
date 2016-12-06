@@ -54,7 +54,8 @@ def make_request():
         'Operation': 'ItemSearch',
         'AWSAccessKeyId': 'AKIAJ7OJKPO3XIUZ6V4A',
         'AssociateTag': 'bestbo03-20',
-        'Keywords': 'Harry Potter',
+        'Keywords': 'Harry+Potter',
+        'SearchIndex':'Books',
         'ResponseGroup': "Images,ItemAttributes,Offers",
         "Sort" : "price",
         "Timestamp": timestamp
