@@ -1,0 +1,10 @@
+{
+  "params": {
+    "querystring": {"dry-run": "true"},
+    "header": {"VENDORKEY": "AAA.999"}
+  },
+  "body-json": {
+    "name": "Chuck Norris",
+    "description": "sample description"
+  }
+}
