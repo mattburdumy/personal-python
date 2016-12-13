@@ -1,0 +1,11 @@
+{
+ "Records": [
+    {
+      "s3":
+        {
+          "bucket": {"name": "some-bucket"},
+          "object": {"key": "some-directory/somefile.csv"}
+        }
+     }
+  ]
+}

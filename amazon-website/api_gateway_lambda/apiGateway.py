@@ -74,6 +74,7 @@ def make_request():
 
     r = requests.get(url=url, params=params)
     print(r.text)
+    session = boto3.Session(profile_name='personal')
     pass
 def main():
     # with open('test-event.json', 'r') as fp:
