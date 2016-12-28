@@ -9,18 +9,47 @@
   <body>
   <h1 id="blergh"> whats up? </h1>
   <script>
-   var accessKeyId = 'AKIAJAYNSXKI5ON666GA';
-   var keySecret  = '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';
-   AWS.config.update({region: 'us-east-1', accessKeyId:accessKeyId, secretAccessKey:keySecret});
+      function createCORSRequest(method, url) {
+          var xhr = new XMLHttpRequest();
+          if ("withCredentials" in xhr) {
 
-   var gatewayHandler = function (err, data) {
-       if (err) console.log(err, err.stack);
-       else {
-           document.getElementById('blergh').innerHTML = data.Payload
-       }
-   };
-   var lambda = new AWS.Lambda();
-   lambda.invoke({FunctionName: 'apiGateway'}, gatewayHandler);
+              // Check if the XMLHttpRequest object has a "withCredentials" property.
+              // "withCredentials" only exists on XMLHTTPRequest2 objects.
+              xhr.open(method, url, true);
+
+          } else if (typeof XDomainRequest != "undefined") {
+
+              // Otherwise, check if XDomainRequest.
+              // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+              xhr = new XDomainRequest();
+              xhr.open(method, url);
+
+          } else {
+
+              // Otherwise, CORS is not supported by the browser.
+              xhr = null;
+
+          }
+          return xhr;
+      }
+
+      var xhr = createCORSRequest('GET', 'https://2k0k7t9g9g.execute-api.us-east-1.amazonaws.com/stage');
+      if (!xhr) {
+          throw new Error('CORS not supported');
+          console.log("CORS Got fucked up")
+      }
+      xhr.onload = function() {
+          var responseText = xhr.responseText;
+          console.log(responseText);
+          document.getElementById('blergh').innerHTML = responseText;
+
+          // process the response.
+      };
+
+      xhr.onerror = function() {
+          console.log('There was an error!');
+      };
+      xhr.send();
 
     </script>
     <!--<script src="scripts/app.js"></script>-->

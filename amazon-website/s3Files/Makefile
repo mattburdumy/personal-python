@@ -5,4 +5,6 @@
 #
 
 sync:
-    aws s3 sync forS3 s3://recowebsite
+	aws s3 --profile=personal sync forS3 s3:\/\/recowebsite --acl=public-read
+
+
